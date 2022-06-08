@@ -1,0 +1,9 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - install_nginx
+    - ravaq_landingpage_systemd_service
+    - install_nodejs
+    - update_landingpage
+    - update_nginx_conf

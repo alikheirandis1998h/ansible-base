@@ -1,0 +1,28 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+lint: |
+  set -e
+  ansible-lint
+
+platforms:
+  - name: instance
+    image: alikheirandish/ubuntu-bionic-ansible
+    command: ""
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+    privileged: true
+    pre_build_image: true
+
+provisioner:
+  name: ansible
+  env:
+    ANSIBLE_ROLES_PATH: "../../roles"
+    ANSIBLE_CONFIG: "../../ansible.cfg"
+
+verifier:
+  name: ansible

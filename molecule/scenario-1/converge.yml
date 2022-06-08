@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include scenario-1 roles"
+      include_role:
+        name: '{{ roleinputvar }}'
+      loop:
+        - '{{ role_1 }}'
+        - '{{ role_2 }}'
+      loop_control:
+        loop_var: roleinputvar
